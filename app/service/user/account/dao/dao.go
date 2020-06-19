@@ -14,6 +14,7 @@ type Dao interface {
 	Info(uid int64) (*model.Info, error)
 	Register(steamID int64) (*model.Info, error)
 	ChangeName(info *model.Info) error
+	Healthy() bool
 	Close()
 }
 
@@ -34,4 +35,8 @@ func New(config *conf.Config) (d *dao) {
 
 func (d *dao) Close() {
 	d.cache.Close()
+}
+
+func (d *dao) Healthy() bool {
+	return db.Healthy(d.db)
 }

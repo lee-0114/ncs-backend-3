@@ -12,6 +12,7 @@ type Dao interface {
 	Info(info *model.VIP) error
 	ExpireTime(info *model.VIP) error
 	Point(info *model.VIP) error
+	Healthy() bool
 	Close()
 }
 
@@ -29,4 +30,8 @@ func New(config *conf.Config) (d *dao) {
 }
 
 func (d *dao) Close() {
+}
+
+func (d *dao) Healthy() bool {
+	return db.Healthy(d.db)
 }
