@@ -5,7 +5,7 @@ go_library(
     srcs = [
         "account.go",
         "dao.go",
-        "dao_mock.go",
+        "dao.mock.go",
     ],
     importpath = "backend/app/service/user/account/dao",
     visibility = ["//visibility:public"],
