@@ -6,7 +6,7 @@ import (
 	cache "backend/pkg/cache/redis"
 	db "backend/pkg/database/mysql"
 	"github.com/go-redis/redis/v7"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type Dao interface {
@@ -33,6 +33,5 @@ func New(config *conf.Config) (d *dao) {
 }
 
 func (d *dao) Close() {
-	d.db.Close()
 	d.cache.Close()
 }
